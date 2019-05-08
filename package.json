@@ -50,7 +50,8 @@
     "webpack": "^4.30.0",
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.2",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "tar": ">=4.4.2"
   },
   "dependencies": {
     "express": "^4.16.4",
