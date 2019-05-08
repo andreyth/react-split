@@ -21,7 +21,7 @@ module.exports = {
 
   target: 'node',
 
-  externals: nodeExternals(),
+  externals: ['@loadable/component', nodeExternals()],
 
   node: {
     __dirname: false
@@ -59,7 +59,8 @@ module.exports = {
             'dynamic-import-node-babel-7',
             '@babel/plugin-proposal-class-properties',
             '@babel/plugin-transform-runtime',
-            'babel-plugin-styled-components'
+            'babel-plugin-styled-components',
+            '@loadable/babel-plugin'
           ]
         }
       },
@@ -105,7 +106,8 @@ module.exports = {
       'shared': paths.shared,
       'client': paths.client,
       'server': paths.server,
-      'components': resolve(paths.src, 'client', 'components')
+      'components': resolve(paths.src, 'client', 'components'),
+      'pages': resolve(paths.src, 'client', 'pages')
     }
   },
 

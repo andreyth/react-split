@@ -1,5 +1,7 @@
-import Home from 'client/pages/Home'
-import Teste from 'client/pages/Teste'
+import loadable from '@loadable/component'
+
+const Home = loadable(() => import('pages/Home'))
+const Teste = loadable(() => import('pages/Teste'))
 
 const routes = [
   { path: '/', exact: true, component: Home },

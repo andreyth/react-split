@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "",
+    "dev-full": "webpack --mode development --config webpack.config.js --watch",
     "dev": "cross-env CLIENT_ENV=true webpack --mode development --config webpack-conf/client.config.js --watch",
     "dev-client": "webpack --mode development --config webpack-conf/client.config.js --watch",
     "dev-server": "webpack --mode development --config webpack-conf/server.config.js --watch",
@@ -25,6 +25,7 @@
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
+    "@loadable/babel-plugin": "^5.8.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-dynamic-import-node-babel-7": "^2.0.7",
@@ -45,15 +46,18 @@
     "standard": "^12.0.1",
     "standard-loader": "^6.0.1",
     "style-loader": "^0.23.1",
+    "tar": ">=4.4.2",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "url-loader": "^1.1.2",
     "webpack": "^4.30.0",
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.2",
-    "webpack-node-externals": "^1.7.2",
-    "tar": ">=4.4.2"
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
+    "@loadable/component": "^5.9.0",
+    "axios": "^0.18.0",
+    "compression": "^1.7.4",
     "express": "^4.16.4",
     "preact": "^8.4.2",
     "preact-compat": "^3.18.5",

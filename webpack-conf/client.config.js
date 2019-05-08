@@ -7,6 +7,7 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+// const LoadablePlugin = require('@loadable/webpack-plugin')
 
 const paths = {
   src: resolve(__dirname, '..', 'src'),
@@ -58,7 +59,8 @@ module.exports = {
             '@babel/plugin-syntax-dynamic-import',
             '@babel/plugin-proposal-class-properties',
             '@babel/plugin-transform-runtime',
-            'babel-plugin-styled-components'
+            'babel-plugin-styled-components',
+            '@loadable/babel-plugin'
           ]
         }
       },
@@ -92,6 +94,9 @@ module.exports = {
       __platform__: JSON.stringify(process.env.PLAT)
     }),
 
+    // Load Dynamic Imports
+    // new LoadablePlugin(),
+
     // Mount Template Html
     ...templatePlugin(),
 
@@ -119,7 +124,8 @@ module.exports = {
       'shared': paths.shared,
       'client': paths.client,
       'server': paths.server,
-      'components': resolve(paths.src, 'client', 'components')
+      'components': resolve(paths.src, 'client', 'components'),
+      'pages': resolve(paths.src, 'client', 'pages')
     }
   },
 

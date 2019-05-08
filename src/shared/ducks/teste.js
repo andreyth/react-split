@@ -10,3 +10,10 @@ export default function testeReducer (state = 'casa', action) {
       return state
   }
 }
+
+export const loadUsers = () => {
+  return {
+    type: Types.USER,
+    payload: 'ANDREY'
+  }
+}
