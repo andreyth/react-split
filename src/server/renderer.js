@@ -2,6 +2,7 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter, matchPath } from 'react-router-dom'
 import { Provider } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 import store from 'shared/store'
 import App from 'shared/components/App'
@@ -15,7 +16,7 @@ const renderer = (req, res, next) => {
     }
   })
 
-  const promise = activeRoute.component.initialData ? store.dispatch(activeRoute.component.initialData()) : Promise.resolve()
+  const promise = activeRoute.loadData ? store.dispatch(activeRoute.loadData) : Promise.resolve()
   if (promise instanceof Promise) {
     promise.then(() => {
       console.log(store.getState())
@@ -39,10 +40,15 @@ const genStatic = (req, res, store) => {
 
   const markup = renderToString(app)
 
+  const helmet = Helmet.renderStatic()
+
   let html = `
     <!DOCTYPE html>
     <html>
       <head>
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
+        ${helmet.link.toString()}
       </head>
 
       <body>

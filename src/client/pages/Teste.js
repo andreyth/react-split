@@ -1,14 +1,10 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { loadUsers } from 'shared/ducks/teste'
+import { testeLoad } from 'shared/ducks/initialData'
 
 class Teste extends PureComponent {
-  static initialData () {
-    return loadUsers()
-  }
-
   componentDidMount () {
-    this.props.dispatch(Teste.initialData())
+    this.props.dispatch(testeLoad())
   }
 
   render () {

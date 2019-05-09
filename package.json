@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev-full": "webpack --mode development --config webpack.config.js --watch",
+    "build-full": "cross-env NODE_ENV=production BABEL_ENV=production webpack --mode production --config webpack.config.js",
     "dev": "cross-env CLIENT_ENV=true webpack --mode development --config webpack-conf/client.config.js --watch",
     "dev-client": "webpack --mode development --config webpack-conf/client.config.js --watch",
     "dev-server": "webpack --mode development --config webpack-conf/server.config.js --watch",
@@ -63,10 +64,12 @@
     "preact-compat": "^3.18.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.2.0"
   },
   "standard": {
     "parser": "babel-eslint",
