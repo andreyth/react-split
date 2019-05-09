@@ -1,4 +1,7 @@
 import axios from 'axios'
+import jwtDecode from 'jwt-decode'
+
+import setAuthorizationToken from 'client/utils/setAuthorizationToken'
 
 const Types = {
   SET_CURRENT_USER: 'teste/SET_CURRENT_USER'
@@ -25,15 +28,17 @@ export const setCurrentUser = (user) => {
   }
 }
 
-export const login = () => (dispatch) => {
+export const login = (data) => dispatch => {
   return axios.get('/api/login').then(res => {
     const token = res.data.token
     window.localStorage.setItem('token', token)
-    dispatch(setCurrentUser(res.data))
+    setAuthorizationToken(token)
+    dispatch(setCurrentUser(jwtDecode(token)))
   })
 }
 
 export const logout = () => (dispatch) => {
   window.localStorage.removeItem('token')
+  setAuthorizationToken(false)
   dispatch(setCurrentUser({}))
 }

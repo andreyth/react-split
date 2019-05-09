@@ -2,9 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
+import jwtDecode from 'jwt-decode'
 
+import setAuthorizationToken from 'client/utils/setAuthorizationToken'
 import store from 'shared/store'
 import App from 'shared/components/App'
+import { setCurrentUser } from 'shared/ducks/auth'
+
+if (window.localStorage.jwtToken) {
+  const token = window.localStorage.jwtToken
+  setAuthorizationToken(token)
+  store.dispatch(setCurrentUser(jwtDecode(token)))
+}
 
 ReactDOM.render(
   <Provider store={store}>
